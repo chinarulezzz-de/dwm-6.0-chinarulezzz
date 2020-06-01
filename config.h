@@ -20,15 +20,25 @@ static const char               selbgcolor[]            = "#8fbcbb";            
 static const char               selfgcolor[]            = "#ffffff";            // window title foreground color
 */
 
-// gruvbox theme
+/* gruvbox theme
 static const char               normbordercolor[]       = "#1D2021";            // window borders color
 static const char               normbgcolor[]           = "#282828";            // background color
 static const char               normfgcolor[]           = "#A89984";            // text color in status bar
 static const char               selbordercolor[]        = "#FABD30";            // active window border color
 static const char               selbgcolor[]            = "#FABD30";            // window title/tags background color
 static const char               selfgcolor[]            = "#282828";            // window title/tags foreground color
+*/
 
-static const unsigned int       borderpx                = 2;                    // border pixel of windows
+// calmar256chinarulezzz theme
+static const char               normbordercolor[]       = "#080808";            // window borders color
+static const char               normbgcolor[]           = "#000000";            // background color
+static const char               normfgcolor[]           = "#008000";            // text color in status bar
+static const char               selbordercolor[]        = "#005f00";            // active window border color
+static const char               selbgcolor[]            = "#080808";            // window title/tags background color
+static const char               selfgcolor[]            = "#00ff00";            // window title/tags foreground color
+
+
+static const unsigned int       borderpx                = 1;                    // border pixel of windows
 static const unsigned int       snap                    = 32;                   // snap pixel
 static const unsigned int       systrayspacing          = 2;                    // systray spacing
 static const bool               showsystray             = true;                 // False means no systray
@@ -140,6 +150,7 @@ static const char *pass_cmd[] = {
 };
 static const char *lock_cmd[] = { "scrlock.sh",  NULL };
 static const char *term_cmd[] = { "st", NULL };
+static const char *tvim_cmd[] = { "st", "-e", "vim", "-c", ":XTerm", NULL };
 
 // cmus settings
 //static const char *player_play_cmd[]    = { "cmus-remote", "--pause",             null };
@@ -169,6 +180,7 @@ static Key keys[] = {
 
  { MODKEY,                      XK_l,                           spawn,                  {.v = lock_cmd}         },
  { MODKEY|ShiftMask,            XK_Return,                      spawn,                  {.v = term_cmd}         },
+ { MODKEY|ControlMask,          XK_Return,                      spawn,                  {.v = tvim_cmd}         },
 
  { MODKEY,                      XK_b,                           togglebar,              {0}                     },
 
