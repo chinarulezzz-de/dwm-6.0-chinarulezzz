@@ -21,10 +21,6 @@ This fork is extended with several patches:
 - optional window title
 - configure layout per tag at startup
 
-Screenshot
-------------
-![image (5 KB)][scrshot img]
-
 
 Requirements
 ------------
