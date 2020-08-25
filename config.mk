@@ -36,7 +36,7 @@ LIBS=		${BASELIB} ${X11LIB} -lc -lX11 -lXft ${XINERAMALIBS}
 # flags
 #CPPFLAGS=	-D_POSIX_C_SOURCE=2 -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS} ${PWKL}
 CPPFLAGS=	-D_DEFAULT_SOURCE -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS} ${PWKL}
-CFLAGS=		-std=c99 -pedantic -Wall -Wextra -Os -Wformat ${INCS} ${CPPFLAGS}
+CFLAGS+=	-std=c99 -pedantic -Wall -Wextra -Wformat ${INCS} ${CPPFLAGS}
 LDFLAGS=	-s ${LIBS}
 
 # Solaris
