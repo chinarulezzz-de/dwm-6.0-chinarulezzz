@@ -1,5 +1,6 @@
 // See LICENSE file for copyright and license details.
-
+// vim:sw=2:ts=2:sts=2:et:cc=140
+//
 // TODO:
 // add to man:
 //
@@ -9,34 +10,14 @@
 //
 
 // appearance
-static const char               font[]                  = "Iosevka Term:pixelsize=13:antialias=true:autohint=true";
+static const char               font[]                  = "Terminus:size=9:antialias=false:autohint=false";
 
-/* nordic theme
-static const char               normbordercolor[]       = "#4c566a";            // window borders color
-static const char               normbgcolor[]           = "#2e3440";            // background color
-static const char               normfgcolor[]           = "#d8dee9";            // text color in status bar
-static const char               selbordercolor[]        = "#bf616a";            // active window border color
-static const char               selbgcolor[]            = "#8fbcbb";            // window title background color
-static const char               selfgcolor[]            = "#ffffff";            // window title foreground color
-*/
-
-/* gruvbox theme
-static const char               normbordercolor[]       = "#1D2021";            // window borders color
-static const char               normbgcolor[]           = "#282828";            // background color
-static const char               normfgcolor[]           = "#A89984";            // text color in status bar
-static const char               selbordercolor[]        = "#FABD30";            // active window border color
-static const char               selbgcolor[]            = "#FABD30";            // window title/tags background color
-static const char               selfgcolor[]            = "#282828";            // window title/tags foreground color
-*/
-
-// calmar256chinarulezzz theme
 static const char               normbordercolor[]       = "#080808";            // window borders color
 static const char               normbgcolor[]           = "#000000";            // background color
 static const char               normfgcolor[]           = "#008000";            // text color in status bar
 static const char               selbordercolor[]        = "#005f00";            // active window border color
 static const char               selbgcolor[]            = "#080808";            // window title/tags background color
 static const char               selfgcolor[]            = "#00ff00";            // window title/tags foreground color
-
 
 static const unsigned int       borderpx                = 1;                    // border pixel of windows
 static const unsigned int       snap                    = 32;                   // snap pixel
@@ -52,12 +33,12 @@ static const bool               resizehints             = false;                
 
 static const Layout layouts[] = {
 // symbol       arrange function
- { "[]=",       tile            }, // 0 []= Mod+t         // first entry is default
- { "><>",       NULL            }, // 1 ><> Mod+f         // no layout function means floating behaviour
- { "[M]",       monocle         }, // 2 [M] Mod+m
- { "TTT",       bstack          }, // 3 TTT Mod+s
- { "===",       bstackhoriz     }, // 4 === Mod+h
- { "###",       gaplessgrid     }, // 5 ### Mod+g
+ { "[]=",       tile            }, // idx:0  key:Mod+t                          // first entry is default
+ { "><>",       NULL            }, // idx:1  key:Mod+f                          // no layout function means floating behaviour
+ { "[M]",       monocle         }, // idx:2  key:Mod+m
+ { "TTT",       bstack          }, // idx:3  key:Mod+s
+ { "===",       bstackhoriz     }, // idx:4  key:Mod+h
+ { "###",       gaplessgrid     }, // idx:5  key:Mod+g
 };
 
 // number of tags per monitor
@@ -83,41 +64,30 @@ static CustomTagLayout tags[][TAGS] = {
 };
 
 static const Rule rules[] = {
-// class                instance        title           role            tag mask        isfloating   iscentered      monitor
- { "tag1",              NULL,           NULL,           NULL,           0,              false,       false,          0  },
- { "Firefox",           NULL,           NULL,           NULL,           0,              false,       false,          0  },
+// class                instance        title           role            tag mask        isfloating    iscentered      monitor
 
- { "tag2",              NULL,           NULL,           NULL,           2,              false,       false,          0  },
-
- { "tag3",              NULL,           NULL,           NULL,           4,              false,       false,          0  },
-
- { "tag4",              NULL,           NULL,           NULL,           8,              false,       false,          0  },
- 
- { "tag5",              NULL,           NULL,           NULL,           16,             false,       false,          0  },
-
- { "tag6",              NULL,           NULL,           NULL,           32,             false,       false,          0  },
-
- { "tag7",              NULL,           NULL,           NULL,           64,             false,       false,          0  },
-
- { "tag8",              NULL,           NULL,           NULL,           128,            false,       false,          0  },
- { "qBittorrent",       NULL,           NULL,           NULL,           128,            false,       false,          0  },
-
- { "tag9",              NULL,           NULL,           NULL,           256,            false,       false,          0  },
- { "Pavucontrol",       "pavucontrol",  "Volume Control", NULL,         256,            false,       false,          0  },
+// fixed monitor
+ { "Firefox",           NULL,           NULL,           NULL,           0,              false,        false,          0  },
+ { "Navigator",         NULL,           NULL,           NULL,           0,              false,        false,          0  },
+ { "XTerm",             NULL,           "irc",          NULL,           2,              false,        false,          0  },
+ { "XTerm",             NULL,           "tox",          NULL,           2,              false,        false,          0  },
+ { "XTerm",             NULL,           "rss",          NULL,           2,              false,        false,          0  },
+ { "XTerm",             NULL,           "mail",         NULL,           2,              false,        false,          0  },
+ { "qBittorrent",       NULL,           NULL,           NULL,           128,            false,        false,          0  },
+ { "Pavucontrol",       "pavucontrol",  "Volume Control", NULL,         256,            false,        false,          0  },
 
 // current active monitor
- { "todo",              NULL,           "todo",         NULL,           0,              true,        true,           -1 },
- { "notes",             NULL,           "notes",        NULL,           0,              true,        true,           -1 },
- { "Gimp",              NULL,           NULL,           NULL,           0,              true,        true,           -1 },
- { "Lazarus",           NULL,           NULL,           NULL,           0,              true,        true,           -1 },
- { "floaterm",          "xterm",        NULL,           NULL,           0,              true,        true,           -1 },
- { "XBiff",             "xbiff",        "xbiff",        NULL,           ~0,             true,        true,           -1 },
- { "XClock",            "xclock",       "xclock",       NULL,           ~0,             true,        true,           -1 },
- { "XCalc",             "xcalc",        "Calculator",   NULL,           0,              true,        true,           -1 },
- { "Xmessage",          "xmessage",     "xmessage",     NULL,           0,              true,        true,           -1 },
- { "Ssvnc.tcl",         "ssvnc.tcl",    "SSL/SSH VNC Viewer", NULL,     0,              true,        true,           -1 },
+ { "FTerm",             NULL,           NULL,           NULL,           0,              true,         true,           -1 },
+ { "FTerm",             NULL,           NULL,           NULL,           0,              true,         true,           -1 },
+ { "Gimp",              NULL,           NULL,           NULL,           0,              true,         true,           -1 },
+ { "Lazarus",           NULL,           NULL,           NULL,           0,              true,         true,           -1 },
+ { "floaterm",          "xterm",        NULL,           NULL,           0,              true,         true,           -1 },
+ { "XBiff",             "xbiff",        "xbiff",        NULL,           ~0,             true,         true,           -1 },
+ { "XClock",            "xclock",       "xclock",       NULL,           ~0,             true,         true,           -1 },
+ { "XCalc",             "xcalc",        "Calculator",   NULL,           0,              true,         true,           -1 },
+ { "Xmessage",          "xmessage",     "xmessage",     NULL,           0,              true,         true,           -1 },
+ { "Ssvnc.tcl",         "ssvnc.tcl",    "SSL/SSH VNC Viewer", NULL,     0,              true,         true,           -1 },
 };
-
 
 // key definitions
 // Mod4Mask - Windows key, Mod1Mask - Alt
@@ -148,28 +118,30 @@ static const char *pass_cmd[] = {
         "-sf", selfgcolor,
         NULL
 };
-static const char *lock_cmd[] = { "scrlock.sh",  NULL };
-static const char *term_cmd[] = { "st", NULL };
-static const char *tvim_cmd[] = { "st", "-e", "vim", "-c", ":XTerm", NULL };
+static const char *lock_cmd[] = { "scrlock", NULL };
+static const char *term_cmd[] = { "xterm",   NULL };
 
 // cmus settings
-//static const char *player_play_cmd[]    = { "cmus-remote", "--pause",             null };
-//static const char *player_stop_cmd[]    = { "cmus-remote", "--stop",              null };
-//static const char *player_prev_cmd[]    = { "cmus-remote", "--prev",              null };
-//static const char *player_next_cmd[]    = { "cmus-remote", "--next",              null };
-static const char *player_play_cmd[]    = { "mocp", "--toggle-pause",   NULL };
-static const char *player_stop_cmd[]    = { "mocp", "--stop",           NULL };
-static const char *player_prev_cmd[]    = { "mocp", "--previous",       NULL };
-static const char *player_next_cmd[]    = { "mocp", "--next",           NULL };
+static const char *player_play_cmd[]  = { "mocp", "--toggle-pause", NULL };
+static const char *player_stop_cmd[]  = { "mocp", "--stop",         NULL };
+static const char *player_prev_cmd[]  = { "mocp", "--previous",     NULL };
+static const char *player_next_cmd[]  = { "mocp", "--next",         NULL };
 
-// ALSA settings
-static const char *master_mute_cmd[]    = { "amixer", "sset", "Master",     "toggle",   NULL };
-static const char *master_decv_cmd[]    = { "amixer", "sset", "Master",     "1-",       NULL };
-static const char *master_incv_cmd[]    = { "amixer", "sset", "Master",     "1+",       NULL };
+#ifdef __DragonFly__
+// DragonFly Mixer
+static const char *mixer_vol_mute[]   = { "mixer", "vol", "0",   NULL };
+static const char *mixer_vol_inc[]    = { "mixer", "vol", "+10", NULL };
+static const char *mixer_vol_dec[]    = { "mixer", "vol", "-10", NULL };
+#else
+// ALSA mixer
+static const char *master_mute_cmd[]  = { "amixer", "sset", "Master", "toggle", NULL };
+static const char *master_decv_cmd[]  = { "amixer", "sset", "Master", "1-",     NULL };
+static const char *master_incv_cmd[]  = { "amixer", "sset", "Master", "1+",     NULL };
+#endif
 
 // Notebooks settings
-static const char *xbacklight_i_cmd[]   = { "xbacklight", "-inc", "10", NULL };
-static const char *xbacklight_d_cmd[]   = { "xbacklight", "-dec", "10", NULL };
+static const char *xbacklight_i_cmd[] = { "xbacklight", "-inc", "10", NULL };
+static const char *xbacklight_d_cmd[] = { "xbacklight", "-dec", "10", NULL };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -180,7 +152,6 @@ static Key keys[] = {
 
  { MODKEY,                      XK_l,                           spawn,                  {.v = lock_cmd}         },
  { MODKEY|ShiftMask,            XK_Return,                      spawn,                  {.v = term_cmd}         },
- { MODKEY|ControlMask,          XK_Return,                      spawn,                  {.v = tvim_cmd}         },
 
  { MODKEY,                      XK_b,                           togglebar,              {0}                     },
 
@@ -242,20 +213,23 @@ static Key keys[] = {
         TAGKEYS(                XK_8,                                                                   7)
         TAGKEYS(                XK_9,                                                                   8)
 
-
 // Multimedia keyboard shortcuts
-
-// cmus
+// Media player
  { 0,                           XF86XK_AudioPlay,               spawn,                  {.v = player_play_cmd}  },
  { 0,                           XF86XK_AudioStop,               spawn,                  {.v = player_stop_cmd}  },
  { 0,                           XF86XK_AudioPrev,               spawn,                  {.v = player_prev_cmd}  },
  { 0,                           XF86XK_AudioNext,               spawn,                  {.v = player_next_cmd}  },
-
-// ALSA
+#ifdef __DragonFly__
+// DragonFly Mixer
+ { 0,                           XF86XK_AudioMute,               spawn,                  {.v = master_mute_cmd}  },
+ { 0,                           XF86XK_AudioLowerVolume,        spawn,                  {.v = mixer_vol_dec}    },
+ { 0,                           XF86XK_AudioRaiseVolume,        spawn,                  {.v = mixer_vol_inc}    },
+#else
+// ALSA Linux Mixer
  { 0,                           XF86XK_AudioMute,               spawn,                  {.v = master_mute_cmd}  },
  { 0,                           XF86XK_AudioLowerVolume,        spawn,                  {.v = master_decv_cmd}  },
  { 0,                           XF86XK_AudioRaiseVolume,        spawn,                  {.v = master_incv_cmd}  },
-
+#endif
 // Brightness
  { 0,                           XF86XK_MonBrightnessUp,         spawn,                  {.v = xbacklight_i_cmd} },
  { 0,                           XF86XK_MonBrightnessDown,       spawn,                  {.v = xbacklight_d_cmd} },
@@ -280,5 +254,4 @@ static Button buttons[] = {
  { ClkTagBar,           MODKEY,         Button3,        toggletag,              {0}                     },
 };
 
-// vim:sw=2:ts=2:sts=2:et:
 // End of file
