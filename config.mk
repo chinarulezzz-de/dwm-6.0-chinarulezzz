@@ -1,34 +1,47 @@
 # dwm version
-VERSION = 6.0
+VERSION=	6.0
 
 # Customize below to fit your system
 
 # paths
-PREFIX = /usr/local
-MANPREFIX = ${PREFIX}/share/man
+PREFIX=		/usr/local
+MANPREFIX=	${PREFIX}/share/man
 
-X11INC = /usr/include/X11
-X11LIB = /usr/lib/X11
+# includes
+BASEINC=	-I${.CURDIR}
+BASEINC+=	-I/usr/include
+BASEINC+=	-I/usr/local/include
+X11INC=		-I/usr/include/X11
+X11INC+=	-I/usr/local/include/X11
+FREETYPEINC=	-I/usr/include/freetype2
+FREETYPEINC+=	-I/usr/local/include/freetype2
+
+# libs
+BASELIB=	-L/usr/lib
+BASELIB+=	-L/usr/local/lib
+X11LIB=		-L/usr/lib/X11
+X11LIB+=	-L/usr/local/lib/X11
+
 
 # per-window keyboard layout
-PWKL = -DPWKL
+PWKL=		-DPWKL
 
 # Xinerama
-XINERAMALIBS = -L${X11LIB} -lXinerama
-XINERAMAFLAGS = -DXINERAMA
+XINERAMALIBS=	-lXinerama
+XINERAMAFLAGS=	-DXINERAMA
 
-# includes and libs
-INCS = -I. -I/usr/include -I${X11INC} -I/usr/include/freetype2
-LIBS = -L/usr/lib -lc -L${X11LIB} -lX11 ${XINERAMALIBS} -lXft
+INCS=		${BASEINC} ${X11INC} ${FREETYPEINC}
+LIBS=		${BASELIB} ${X11LIB} -lc -lX11 -lXft ${XINERAMALIBS}
 
 # flags
-CPPFLAGS = -D_POSIX_C_SOURCE=2 -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS} ${PWKL}
-CFLAGS = -std=c99 -pedantic -Wall -Wextra -Os -Wformat ${INCS} ${CPPFLAGS}
-LDFLAGS = -s ${LIBS}
+#CPPFLAGS=	-D_POSIX_C_SOURCE=2 -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS} ${PWKL}
+CPPFLAGS=	-D_DEFAULT_SOURCE -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS} ${PWKL}
+CFLAGS=		-std=c99 -pedantic -Wall -Wextra -Os -Wformat ${INCS} ${CPPFLAGS}
+LDFLAGS=	-s ${LIBS}
 
 # Solaris
-#CFLAGS = -fast ${INCS} -DVERSION=\"${VERSION}\"
-#LDFLAGS = ${LIBS}
+#CFLAGS=	-fast ${INCS} -DVERSION=\"${VERSION}\"
+#LDFLAGS=	${LIBS}
 
 # compiler and linker
-CC = cc
+CC?=		cc
