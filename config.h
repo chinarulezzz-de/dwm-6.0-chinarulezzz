@@ -121,11 +121,11 @@ static const char *pass_cmd[] = {
 static const char *lock_cmd[] = { "scrlock", NULL };
 static const char *term_cmd[] = { "xterm",   NULL };
 
-// cmus settings
-static const char *player_play_cmd[]  = { "mocp", "--toggle-pause", NULL };
-static const char *player_stop_cmd[]  = { "mocp", "--stop",         NULL };
-static const char *player_prev_cmd[]  = { "mocp", "--previous",     NULL };
-static const char *player_next_cmd[]  = { "mocp", "--next",         NULL };
+// music player settings
+static const char *player_play_cmd[]  = { "jukebox", "-cmd", "PlayPause", NULL };
+static const char *player_stop_cmd[]  = { "jukebox", "-cmd", "Stop",      NULL };
+static const char *player_prev_cmd[]  = { "jukebox", "-cmd", "PrevSong",  NULL };
+static const char *player_next_cmd[]  = { "jukebox", "-cmd", "NextSong",  NULL };
 
 #ifdef __DragonFly__
 // DragonFly Mixer
