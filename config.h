@@ -64,29 +64,32 @@ static CustomTagLayout tags[][TAGS] = {
 };
 
 static const Rule rules[] = {
-// class                instance        title           role            tag mask        isfloating    iscentered      monitor
+// class                instance        title                 role                                tag mask  isfloating  iscentered  monitor
 
 // fixed monitor
- { "Firefox",           NULL,           NULL,           NULL,           0,              false,        false,          0  },
- { "Navigator",         NULL,           NULL,           NULL,           0,              false,        false,          0  },
- { "XTerm",             NULL,           "irc",          NULL,           2,              false,        false,          0  },
- { "XTerm",             NULL,           "tox",          NULL,           2,              false,        false,          0  },
- { "XTerm",             NULL,           "rss",          NULL,           2,              false,        false,          0  },
- { "XTerm",             NULL,           "mail",         NULL,           2,              false,        false,          0  },
- { "qBittorrent",       NULL,           NULL,           NULL,           128,            false,        false,          0  },
- { "Pavucontrol",       "pavucontrol",  "Volume Control", NULL,         256,            false,        false,          0  },
+ { "Firefox",           NULL,             NULL,               NULL,                               0,        false,      false,      0  },
+ { "Navigator",         NULL,             NULL,               NULL,                               0,        false,      false,      0  },
+ { "XTerm",             NULL,             "irc",              NULL,                               2,        false,      false,      0  },
+ { "XTerm",             NULL,             "tox",              NULL,                               2,        false,      false,      0  },
+ { "XTerm",             NULL,             "rss",              NULL,                               2,        false,      false,      0  },
+ { "XTerm",             NULL,             "mail",             NULL,                               2,        false,      false,      0  },
+ { "qBittorrent",       NULL,             NULL,               NULL,                               128,      false,      false,      0  },
+ { "Pavucontrol",       "pavucontrol",    "Volume Control",   NULL,                               256,      false,      false,      0  },
+ { "Jukebox",           "jukebox",        NULL,               "with search and lists 2",          256,      false,      false,      0  },
+ { "Jukebox",           "jukebox",        "Settings",         "Pref",                             256,      true,       true,       0  },
+ { "Jukebox",           "jukebox",        "Equalizer",        "Equalizer",                        256,      true,       true,       0  },
 
 // current active monitor
- { "FTerm",             NULL,           NULL,           NULL,           0,              true,         true,           -1 },
- { "FTerm",             NULL,           NULL,           NULL,           0,              true,         true,           -1 },
- { "Gimp",              NULL,           NULL,           NULL,           0,              true,         true,           -1 },
- { "Lazarus",           NULL,           NULL,           NULL,           0,              true,         true,           -1 },
- { "floaterm",          "xterm",        NULL,           NULL,           0,              true,         true,           -1 },
- { "XBiff",             "xbiff",        "xbiff",        NULL,           ~0,             true,         true,           -1 },
- { "XClock",            "xclock",       "xclock",       NULL,           ~0,             true,         true,           -1 },
- { "XCalc",             "xcalc",        "Calculator",   NULL,           0,              true,         true,           -1 },
- { "Xmessage",          "xmessage",     "xmessage",     NULL,           0,              true,         true,           -1 },
- { "Ssvnc.tcl",         "ssvnc.tcl",    "SSL/SSH VNC Viewer", NULL,     0,              true,         true,           -1 },
+ { "FTerm",             NULL,           NULL,                 NULL,                               0,        true,       true,       -1 },
+ { "FTerm",             NULL,           NULL,                 NULL,                               0,        true,       true,       -1 },
+ { "Gimp",              NULL,           NULL,                 NULL,                               0,        true,       true,       -1 },
+ { "Lazarus",           NULL,           NULL,                 NULL,                               0,        true,       true,       -1 },
+ { "floaterm",          "xterm",        NULL,                 NULL,                               0,        true,       true,       -1 },
+ { "XBiff",             "xbiff",        "xbiff",              NULL,                              ~0,        true,       true,       -1 },
+ { "XClock",            "xclock",       "xclock",             NULL,                              ~0,        true,       true,       -1 },
+ { "XCalc",             "xcalc",        "Calculator",         NULL,                               0,        true,       true,       -1 },
+ { "Xmessage",          "xmessage",     "xmessage",           NULL,                               0,        true,       true,       -1 },
+ { "Ssvnc.tcl",         "ssvnc.tcl",    "SSL/SSH VNC Viewer", NULL,                               0,        true,       true,       -1 },
 };
 
 // key definitions
