@@ -129,6 +129,9 @@ static const char *player_play_cmd[]  = { "jukebox", "-cmd", "PlayPause", NULL }
 static const char *player_stop_cmd[]  = { "jukebox", "-cmd", "Stop",      NULL };
 static const char *player_prev_cmd[]  = { "jukebox", "-cmd", "PrevSong",  NULL };
 static const char *player_next_cmd[]  = { "jukebox", "-cmd", "NextSong",  NULL };
+static const char *player_vol_inc[]   = { "jukebox", "-cmd", "IncVolume", NULL };
+static const char *player_vol_dec[]   = { "jukebox", "-cmd", "DecVolume", NULL };
+static const char *player_vol_mute[]  = { "jukebox", "-cmd", "TogMute",   NULL };
 
 #ifdef __DragonFly__
 // DragonFly Mixer
@@ -222,6 +225,9 @@ static Key keys[] = {
  { 0,                           XF86XK_AudioStop,               spawn,                  {.v = player_stop_cmd}  },
  { 0,                           XF86XK_AudioPrev,               spawn,                  {.v = player_prev_cmd}  },
  { 0,                           XF86XK_AudioNext,               spawn,                  {.v = player_next_cmd}  },
+ { MODKEY,                      XF86XK_AudioMute,               spawn,                  {.v = player_vol_mute}  },
+ { MODKEY,                      XF86XK_AudioLowerVolume,        spawn,                  {.v = player_vol_dec}   },
+ { MODKEY,                      XF86XK_AudioRaiseVolume,        spawn,                  {.v = player_vol_inc}   },
 #ifdef __DragonFly__
 // DragonFly Mixer
  { 0,                           XF86XK_AudioMute,               spawn,                  {.v = master_mute_cmd}  },
