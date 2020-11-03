@@ -14,10 +14,10 @@ static const char               font[]                  = "Terminus:size=9:antia
 
 static const char               normbordercolor[]       = "#080808";            // window borders color
 static const char               normbgcolor[]           = "#000000";            // background color
-static const char               normfgcolor[]           = "#008000";            // text color in status bar
-static const char               selbordercolor[]        = "#005f00";            // active window border color
+static const char               normfgcolor[]           = "#2E5E37";            // text color in status bar
+static const char               selbordercolor[]        = "#2E5E37";            // active window border color
 static const char               selbgcolor[]            = "#080808";            // window title/tags background color
-static const char               selfgcolor[]            = "#00ff00";            // window title/tags foreground color
+static const char               selfgcolor[]            = "#55AF66";            // window title/tags foreground color
 
 static const unsigned int       borderpx                = 1;                    // border pixel of windows
 static const unsigned int       snap                    = 32;                   // snap pixel
