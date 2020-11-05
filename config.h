@@ -52,7 +52,7 @@ static CustomTagLayout tags[][TAGS] = {
 {{"1:ff",                2},
  {"2:mail",              0},
  {"3:irc",               0},
- {"4",                   0},
+ {"4:tox",               0},
  {"5",                   0},
  {"6",                   0},
  {"7",                   0},
@@ -72,8 +72,11 @@ static const Rule rules[] = {
  { "Navigator",         NULL,             NULL,               NULL,                               0,        false,      false,      0  },
 
  { "Sylpheed",          NULL,             NULL,               NULL,                               2,        false,      false,      0  },
+ { "Sylpheed",          "sylpheed",       "Input password",   NULL,                               2,        true,       true,       0  },
 
  { "Hexchat",           "hexchat",        NULL,               NULL,                               4,        false,      false,      0  },
+
+ { "XTerm",             "xterm",          "tox",              NULL,                               8,        false,      false,      0  },
 
  { "Pavucontrol",       "pavucontrol",    "Volume Control",   NULL,                               256,      false,      false,      0  },
  { "Jukebox",           "jukebox",        NULL,               "with search and lists 2",          256,      false,      false,      0  },
@@ -84,8 +87,6 @@ static const Rule rules[] = {
 //
 // current active monitor
 //
- { "XTerm",             "xterm",          "tox",              NULL,                               ~0,       true,       true,       -1 },
-
  // FTerm - float win class
  { "FTerm",             NULL,             NULL,               NULL,                               0,        true,       true,       -1 },
  { "FTerm",             NULL,             NULL,               NULL,                               0,        true,       true,       -1 },
@@ -124,6 +125,7 @@ static const char *pass_cmd[] = {
 };
 static const char *lock_cmd[] = { "scrlock", NULL };
 static const char *term_cmd[] = { "xterm",   NULL };
+static const char *transset_cmd[] = { "transset-df", "-a", "-t", "0.89",  NULL };
 
 // music player settings
 static const char *player_play_cmd[]  = { "jukebox", "-cmd", "PlayPause", NULL };
@@ -243,6 +245,8 @@ static Key keys[] = {
 // Brightness
  { 0,                           XF86XK_MonBrightnessUp,         spawn,                  {.v = xbacklight_i_cmd} },
  { 0,                           XF86XK_MonBrightnessDown,       spawn,                  {.v = xbacklight_d_cmd} },
+// Transparency
+ { ControlMask|Mod4Mask,        XK_t,                           spawn,                  {.v = transset_cmd}     },
 };
 
 // button definitions
