@@ -21,10 +21,9 @@ static const char               selfgcolor[]            = "#55AF66";            
 
 static const unsigned int       borderpx                = 1;                    // border pixel of windows
 static const unsigned int       snap                    = 32;                   // snap pixel
-static const unsigned int       systrayspacing          = 2;                    // systray spacing
-static const bool               showsystray             = true;                 // False means no systray
 static const bool               showbar                 = true;                 // False means no bar
 static const bool               topbar                  = false;                // False means bottom bar
+static const double             defaultopacity          = 0.89;                 // Transparency
 
 // layout(s)
 static const float              mfact                   = 0.55;                 // factor of master area size [0.05..0.95]
