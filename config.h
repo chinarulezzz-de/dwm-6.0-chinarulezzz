@@ -142,7 +142,9 @@ static const char *mixer_vol_inc[]    = { "mixer", "vol", "+10", NULL };
 static const char *mixer_vol_dec[]    = { "mixer", "vol", "-10", NULL };
 #else
 // ALSA mixer
-static const char *master_mute_cmd[]  = { "amixer", "sset", "Master", "toggle", NULL };
+//static const char *master_mute_cmd[]  = { "amixer", "sset", "Master", "toggle", NULL };
+// Pulseaudio
+static const char *master_mute_cmd[]  = { "audiotoggle", NULL };
 static const char *master_decv_cmd[]  = { "amixer", "sset", "Master", "1-",     NULL };
 static const char *master_incv_cmd[]  = { "amixer", "sset", "Master", "1+",     NULL };
 #endif
