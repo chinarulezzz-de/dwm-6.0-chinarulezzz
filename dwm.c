@@ -2015,6 +2015,8 @@ propertynotify(XEvent *e)
     case XA_WM_HINTS:
       updatewmhints(c);
       drawbars();
+      if (c->isurgent)
+        XSetWindowBorder(dpy, c->win, dc.sel[ColFG].pixel);
       break;
     default:
       break;
