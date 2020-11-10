@@ -793,6 +793,7 @@ cleanup(void)
 
   XSync(dpy, false);
   XSetInputFocus(dpy, PointerRoot, RevertToPointerRoot, CurrentTime);
+  XDeleteProperty(dpy, root, netatom[NetActiveWindow]);
 }
 
 static void
@@ -1322,8 +1323,10 @@ focus(Client *c)
     XSetWindowBorder(dpy, c->win, dc.sel[ColBorder].pixel);
     setfocus(c);
   }
-  else
+  else {
     XSetInputFocus(dpy, root, RevertToPointerRoot, CurrentTime);
+    XDeleteProperty(dpy, root, netatom[NetActiveWindow]);
+  }
 
   selmon->sel = c;
   drawbars();
@@ -2304,8 +2307,12 @@ sendevent(Client *c, Atom proto)
 static void
 setfocus(Client *c)
 {
-  if (!c->neverfocus)
+  if (!c->neverfocus) {
     XSetInputFocus(dpy, c->win, RevertToPointerRoot, CurrentTime);
+    XChangeProperty(dpy, root, netatom[NetActiveWindow],
+                    XA_WINDOW, 32, PropModeReplace,
+                    (unsigned char *) &(c->win), 1);
+  }
 
   sendevent(c, wmatom[WMTakeFocus]);
 }
